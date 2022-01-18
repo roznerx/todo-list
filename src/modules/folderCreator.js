@@ -17,6 +17,3 @@ class Folder {
 }
 
 export { Folder };
-
-
-
