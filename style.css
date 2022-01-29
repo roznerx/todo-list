@@ -32,51 +32,152 @@ html {
 }
 
 body {
-    height: 100%;
     background-color: #f0f6f0;
+}
+
+#container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: flex-start;
 }
 
-#header {
+.header {
     order: 1;
     display: flex;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 150px; 
+    height: 180px; 
     background-color: #f0f6f0;
     border-bottom: 5px solid #222323;
-    
 }
 
-#header-title {
+.header-title {
     font-family: 'retro_computer';
     font-size: 70px;
     color: #222323;
     margin-left: 50px;
+    margin-top: 60px;
+    height:50px; 
 }
 
-#content {/*
-    position: fixed;
-    order: 2;
+#bar {
+    margin-left: 90px;
+    border: 3px solid #222323;
+}
+
+#headerButtons {
+    margin-left: 65px;
+    margin-top: 75px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;*/
-    display: flex;
-    height: calc( 100vh - 30px);
-}
-/*
-#sidebar{
-    order: 1;
-    background-color: #222323;
-    border-right: 5px solid #222323;
-    width: 300px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 60px;
 }
 
-#main{
+.headerButton {
+    font-family: 'retro_computer';
+    background-color: #f0f6f0;
+    color: #222323;
+    border: 4px solid #222323;
+    font-size: 45px;
+    padding: 10px;
+    margin-top: -15px;
+    margin-left: 20px;
+}
+
+.headerButton:hover {
+    cursor: pointer;
+    background-color: #222323;
+    color: #f0f6f0;
+    border: 4px solid #f0f6f0;
+}
+
+#new-task-button{
+    margin-left: 20px;
+}
+
+.content {
     order: 2;
-}*/
+    display: flex;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 185px;
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+#folder-section {
+    width: 650px;
+
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+
+}
+
+#sections-bar {
+    margin-left: -2px;
+    border: 3px solid #222323;
+}
+
+
+/* Folder PopUp */
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #f0f6f0;
+    margin-top: 10%;
+    margin-left: 30%;
+    border: 3px solid #222323;
+    width: 500px;
+    height: 250px;
+}
+
+#folder-pop-up-label {
+    font-family: 'retro_computer';
+    color: #222323;
+    font-size: 30px;
+    margin-left: 45px;
+}
+
+input {
+    width: 80%;
+    height: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    margin-left: 10%;
+    font-family: 'retro_computer';
+    font-size: 20px;
+    display: inline-block;
+    border: 2px solid #222323;
+    box-sizing: border-box;
+}
+
+#folder-pop-up-create-button {
+    font-family: 'retro_computer';
+
+    color: #222323;
+}
