@@ -1,4 +1,4 @@
-/* 
+/* Font and Palette
 1bit Monitor Glow Palette
 Created by Polyducks
 palette-black: #222323;
@@ -24,6 +24,8 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+/* HTML Basic Skeleton */ 
+
 html {
     position: relative;
     min-width: 1024px;
@@ -40,6 +42,8 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+/* Header */ 
 
 .header {
     order: 1;
@@ -100,6 +104,8 @@ body {
     margin-left: 20px;
 }
 
+/* Page Content */
+
 .content {
     order: 2;
     display: flex;
@@ -116,20 +122,33 @@ body {
     height: 100%;
 }
 
+/* Folder Section */ 
+
 #folder-section {
     width: 650px;
 
+    /*
     display: flex;
     align-items: flex-start;
     flex-wrap: nowrap;
+    */
+    flex-wrap: wrap;
+    align-content: flex-start;
+    
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /*-webkit-flex-flow: row;*/
+    justify-content: left;
+    
+    line-height: 30px;
 
 }
-
-#sections-bar {
-    margin-left: -2px;
-    border: 3px solid #222323;
-}
-
 
 /* Folder PopUp */
 
@@ -161,6 +180,7 @@ body {
     color: #222323;
     font-size: 30px;
     margin-left: 45px;
+    margin-right: 45px;
 }
 
 input {
@@ -174,10 +194,58 @@ input {
     display: inline-block;
     border: 2px solid #222323;
     box-sizing: border-box;
+    margin-bottom: -5px;
 }
 
 #folder-pop-up-create-button {
     font-family: 'retro_computer';
-
+    font-size: 20px;
     color: #222323;
+    margin-left: 32%;
+    width: 125px;
+    height: 35px;
+    border: 3px solid #222323;
+    padding-left: 4%;
+    padding-top: 2%;
 }
+
+#folder-pop-up-create-button:hover {
+    cursor: pointer;
+    background-color: #222323;
+    color: #f0f6f0;
+    border: 4px solid #f0f6f0;
+}
+
+/* Visual Folders */
+
+.visual-folder {
+    border: 3px solid #222323;
+    margin: 10px;
+    margin-top: 30px;
+    margin-left: 70px;
+    background-color: #f0f6f0;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: left;
+    /*flex: 1 0 auto;*/
+    height: 200px;
+    width: 200px;
+    font-family: 'retro_computer';
+    font-size: 20px;
+    text-align: center;
+    padding-left:3px;
+    padding-bottom:10px;
+    word-wrap: break-word;
+}
+
+.visual-folder:before {
+    content: "";
+    float: left;
+    padding-top: 100%;
+}
+
+#sections-bar {
+    margin-left: -2px;
+    border: 3px solid #222323;
+}
+
