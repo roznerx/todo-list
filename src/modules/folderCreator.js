@@ -16,4 +16,6 @@ class Folder {
     }
 };
 
-export { Folder };
+let folderArray = [];
+
+export { Folder , folderArray };

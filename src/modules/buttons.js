@@ -1,7 +1,6 @@
 import { Folder } from "../modules/folderCreator"
 import { Todo } from "../modules/itemCreator"
-import { folderPopUp , folderSelectedName } from "../modules/folderPopUp"
-
+import { folderPopUp , /*folderSelectedName*/ } from "../modules/folderPopUp"
 
 function buttonMaker(id) {
     let button = document.createElement("button");
@@ -10,22 +9,19 @@ function buttonMaker(id) {
     return button;
 }
 
+//New Folder Button
+
 let newFolderButton = buttonMaker("new-folder-button");
 newFolderButton.innerHTML = "New Folder";
 
 newFolderButton.addEventListener("click", () => {
     console.log("FOLDER TEST OK");
-
     document.body.appendChild(folderPopUp);
     folderPopUp.style.display = "block";
-
-    window.onclick = function(event) {
-        if (event.target == folderPopUp) {
-            folderPopUp.style.display = "none";
-        }
-    }
-
 });
+
+
+//New Task Button
 
 let newTaskButton = buttonMaker("new-task-button");
 newTaskButton.innerHTML = "New Task";
@@ -35,4 +31,4 @@ newTaskButton.addEventListener("click", () => {
     console.log(folderContainer);
 });
 
-export { newFolderButton , newTaskButton , folderContainer };
+export { newFolderButton , newTaskButton };

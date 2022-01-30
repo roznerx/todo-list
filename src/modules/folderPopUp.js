@@ -1,4 +1,5 @@
-import { Folder } from "./folderCreator";
+import { Folder, folderArray } from "./folderCreator";
+import { folderSection } from "./sections";
 
 //Modal
 let folderPopUp = document.createElement("div");
@@ -22,23 +23,51 @@ let folderPopUpInput = document.createElement("input");
 folderPopUpInput.type = "text";
 folderPopUpInput.placeholder = "Enter Folder Name";
 folderPopUpInput.name = "name"; 
-//folderPopUpInput.attr = 'required', true;
 folderPopUpForm.appendChild(folderPopUpInput);
 
 //Form Create Button
-let folderCreateButton = document.createElement("input");
+let folderCreateButton = document.createElement("h4");
 folderCreateButton.id = "folder-pop-up-create-button";
 folderCreateButton.innerHTML = "Create";
+function superFolder() {
 
-folderPopUpForm.append(folderCreateButton);
+    let folder = new Folder(folderPopUpInput.value);
+    console.log(folder);
 
+    folderArray.push(folder);
+    console.log(folderArray);
+    console.log(folderArray.length);
 
+    let visualFolder = document.createElement("div");
+    visualFolder.className = "visual-folder";
+    visualFolder.innerHTML = folderPopUpInput.value;
+    folderSection.appendChild(visualFolder);
 
+    folderPopUp.style.display = "none";
+    folderPopUpInput.value = "";
+}
+
+folderCreateButton.onclick = (e) => {
+    if (folderPopUpInput.value == "") {
+        folderPopUpLabel.innerHTML = "This Field Cannot Be Empty! Please Name Your Folder!";
+        folderPopUpLabel.style.fontSize = "20px";
+        folderPopUpLabel.style.textAlign = "center";
+        folderPopUpLabel.style.marginLeft =  "35px";
+    } else {
+        superFolder();
+        folderPopUpLabel.innerHTML = "Enter Folder Name";
+        folderPopUpLabel.style.fontSize = "30px";
+        folderPopUpLabel.style.textAlign = "none";
+        folderPopUpLabel.style.marginLeft = "45px";
+    }
+}
 
 /*
-let folderSelectedName = folderPopUpInput.innerHTML;
+if (folderArray.length = 1) {
+    folderSection.style.overflowY = "auto";
+}
+*/
 
-let testFolder = new Folder(folderSelectedName);*/
-
+folderPopUpForm.append(folderCreateButton);
 
 export { folderPopUp , /*folderSelectedName*/ } 
