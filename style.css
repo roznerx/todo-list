@@ -219,29 +219,51 @@ input {
 /* Visual Folders */
 
 .visual-folder {
+
     border: 3px solid #222323;
     margin: 10px;
     margin-top: 30px;
     margin-left: 70px;
-    background-color: #f0f6f0;
-    font-weight: bold;
-    font-size: 1.5em;
-    text-align: left;
-    /*flex: 1 0 auto;*/
+
+    
     height: 200px;
     width: 200px;
-    font-family: 'retro_computer';
-    font-size: 20px;
-    text-align: center;
+    
     padding-left:3px;
     padding-bottom:10px;
-    word-wrap: break-word;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .visual-folder:before {
     content: "";
     float: left;
     padding-top: 100%;
+}
+
+#visual-folder-img {
+    display: block;
+    position: fixed;
+    align-content: center;
+    max-height: 100px;
+    max-width: 100px;
+}
+
+#visual-folder-text {
+    display: inline-flex;
+    /*max-height: 100px;*/
+    /*max-width: 100px;*/
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: 'retro_computer';
+    font-size: 20px;
+    text-align: left;
+    word-wrap: break-word;
+    flex-wrap: nowrap;
 }
 
 #sections-bar {
