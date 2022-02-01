@@ -1,4 +1,4 @@
-import { Folder, folderArray } from "./folderCreator";
+import { Folder, folderArray , visualFolderCreator } from "./folderCreator";
 import { folderSection } from "./sections";
 
 //Modal
@@ -38,10 +38,14 @@ function superFolder() {
     console.log(folderArray);
     console.log(folderArray.length);
 
-    let visualFolder = document.createElement("div");
-    visualFolder.className = "visual-folder";
-    visualFolder.innerHTML = folderPopUpInput.value;
-    folderSection.appendChild(visualFolder);
+    visualFolderCreator(folderSection, folderPopUpInput);
+    /*
+    let visualFolder = document.createElement("img");
+    visualFolder.src = "./img/folder-icon.png";
+    visualFolder.alt = "folder icon";
+    visualFolder.className = "visual-folder";*/
+    //visualFolder.innerHTML = folderPopUpInput.value;
+    /*folderSection.appendChild(visualFolder);*/
 
     folderPopUp.style.display = "none";
     folderPopUpInput.value = "";

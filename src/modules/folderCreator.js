@@ -18,4 +18,28 @@ class Folder {
 
 let folderArray = [];
 
-export { Folder , folderArray };
+function visualFolderCreator(x, y) {
+
+    let visualFolder = document.createElement("div");
+    visualFolder.className = "visual-folder";
+
+    let visualFolderImg = document.createElement("img");
+    visualFolderImg.src = "./img/folder-icon.png";
+    visualFolderImg.alt = "folder icon";
+    visualFolderImg.id = "visual-folder-img";
+    visualFolder.appendChild(visualFolderImg);
+    console.log("CHILD APPENDED");
+
+    let visualFolderText = document.createElement("h5");
+    visualFolderText.id = "visual-folder-text";
+    visualFolderText.innerHTML = y.value;
+    visualFolder.appendChild(visualFolderText);
+
+    x.appendChild(visualFolder);    
+
+
+
+
+};
+
+export { Folder , folderArray , visualFolderCreator };
