@@ -33,13 +33,15 @@ function visualFolderCreator(x, y) {
     let visualFolderText = document.createElement("h5");
     visualFolderText.id = "visual-folder-text";
     visualFolderText.innerHTML = y.value;
+    
+    if (visualFolderText.innerHTML.length >= 16) {
+        let croppedValue = visualFolderText.innerHTML.substring(0, 16);
+        visualFolderText.innerHTML = croppedValue;
+    }
+
     visualFolder.appendChild(visualFolderText);
 
-    x.appendChild(visualFolder);    
-
-
-
-
+    x.appendChild(visualFolder);
 };
 
 export { Folder , folderArray , visualFolderCreator };

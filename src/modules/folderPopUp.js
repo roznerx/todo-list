@@ -39,13 +39,6 @@ function superFolder() {
     console.log(folderArray.length);
 
     visualFolderCreator(folderSection, folderPopUpInput);
-    /*
-    let visualFolder = document.createElement("img");
-    visualFolder.src = "./img/folder-icon.png";
-    visualFolder.alt = "folder icon";
-    visualFolder.className = "visual-folder";*/
-    //visualFolder.innerHTML = folderPopUpInput.value;
-    /*folderSection.appendChild(visualFolder);*/
 
     folderPopUp.style.display = "none";
     folderPopUpInput.value = "";
