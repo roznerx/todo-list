@@ -59,12 +59,6 @@ folderCreateButton.onclick = (e) => {
     }
 }
 
-/*
-if (folderArray.length = 1) {
-    folderSection.style.overflowY = "auto";
-}
-*/
-
 folderPopUpForm.append(folderCreateButton);
 
 export { folderPopUp , /*folderSelectedName*/ } 

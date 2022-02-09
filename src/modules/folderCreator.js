@@ -20,25 +20,25 @@ let folderArray = [];
 
 function visualFolderCreator(x, y) {
 
+    //VisualFolder Container
     let visualFolder = document.createElement("div");
     visualFolder.className = "visual-folder";
 
+    //VisualFolder Image
     let visualFolderImg = document.createElement("img");
     visualFolderImg.src = "./img/folder-icon.png";
     visualFolderImg.alt = "folder icon";
     visualFolderImg.id = "visual-folder-img";
     visualFolder.appendChild(visualFolderImg);
-    console.log("CHILD APPENDED");
 
+    //VisualFolder Text
     let visualFolderText = document.createElement("h5");
     visualFolderText.id = "visual-folder-text";
     visualFolderText.innerHTML = y.value;
-    
     if (visualFolderText.innerHTML.length >= 16) {
         let croppedValue = visualFolderText.innerHTML.substring(0, 16);
         visualFolderText.innerHTML = croppedValue;
     }
-
     visualFolder.appendChild(visualFolderText);
 
     x.appendChild(visualFolder);
