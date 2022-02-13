@@ -1,5 +1,6 @@
 import { Folder, folderArray } from "./folderCreator";
 import { Todo, visualItemCreator } from "./itemCreator";
+import { todoTable } from "./taskTable";
 import { tasksSection } from "./sections";
 
 //Modal
@@ -47,34 +48,35 @@ let locationInputField = inputFieldMaker("location-input-field", "Select Locatio
 let itemCreateButton = document.createElement("h4");
 itemCreateButton.id = "item-pop-up-create-button";
 itemCreateButton.innerHTML = "Create";
-function superItem() {
-
-    let item = new Todo(titleInputField.value, descriptionInputFiled.value, deadlineInputField.value, 
-        priorityInputField.value, statusInputField.value, locationInputField.value);
-    
-    for (let i = 0; i < folderArray.length; i++) {
-        if (folderArray[i].name === item.location) {
-            folderArray[i].addItem(item);
-        }
-    };
-
-    visualItemCreator(todoTable, item.title);
-
-    itemPopUp.style.display = "none";
-    titleInputField.value = "";
-    descriptionInputFiled.value = "";
-    deadlineInputField.value = "";
-    priorityInputField.value = "";
-    statusInputField.value = "";
-    locationInputField.value = "";
-
-    return item;
-}
-
-itemCreateButton.onclick = (e) => {
-    console.log(item);
-}
-
 itemPopUpForm.append(itemCreateButton);
+itemCreateButton.addEventListener("click", () => {
+    let todo = new Todo(titleInputField.value, descriptionInputFiled.value, deadlineInputField.value, 
+        priorityInputField.value, statusInputField.value, locationInputField.value);
 
-export { itemPopUp }
+    for (let i = 0; i < folderArray.length; i++) {
+        if (folderArray[i].name.toUpperCase() == todo.location.toUpperCase()) {
+            folderArray[i].addItem(todo);
+            visualItemCreator(todoTable, todo);
+            itemPopUp.style.display = "none";
+            itemPopUpLabel.innerHTML = "Create Your New Task";
+            itemPopUpLabel.style.fontSize = "30px";
+            itemPopUpLabel.style.alignItems = "center";
+            itemPopUpLabel.style.marginLeft =  "135px";
+            itemPopUpLabel.style.marginRight =  "45px";
+            itemPopUpLabel.style.paddingTop = "none";
+            titleInputField.value = "";
+            descriptionInputFiled.value = "";
+            deadlineInputField.value = "";
+            priorityInputField.value = "";
+            statusInputField.value = "";
+            locationInputField.value = "";
+        } else {
+            itemPopUpLabel.innerHTML = "Please Select An Existing Folder!";      
+            itemPopUpLabel.style.fontSize = "25px";
+            itemPopUpLabel.style.marginLeft =  "50px";
+            itemPopUpLabel.style.marginTop =  "30px";
+        }
+    };    
+});
+
+export { itemPopUp };

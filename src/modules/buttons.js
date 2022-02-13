@@ -2,6 +2,7 @@ import { Folder } from "../modules/folderCreator"
 import { Todo } from "../modules/itemCreator"
 import { folderPopUp , /*folderSelectedName*/ } from "../modules/folderPopUp"
 import { itemPopUp } from "../modules/itemPopUp"
+import { todoTable } from "./taskTable";
 
 function buttonMaker(id) {
     let button = document.createElement("button");

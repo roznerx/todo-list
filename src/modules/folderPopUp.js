@@ -1,4 +1,4 @@
-import { Folder, folderArray , visualFolderCreator } from "./folderCreator";
+import { Folder, folderArray , selectedFolder, visualFolderCreator } from "./folderCreator";
 import { folderSection } from "./sections";
 
 //Modal
@@ -32,11 +32,7 @@ folderCreateButton.innerHTML = "Create";
 function superFolder() {
 
     let folder = new Folder(folderPopUpInput.value);
-    console.log(folder);
-
     folderArray.push(folder);
-    console.log(folderArray);
-    console.log(folderArray.length);
 
     visualFolderCreator(folderSection, folderPopUpInput);
 
@@ -60,5 +56,6 @@ folderCreateButton.onclick = (e) => {
 }
 
 folderPopUpForm.append(folderCreateButton);
+
 
 export { folderPopUp , /*folderSelectedName*/ } 
