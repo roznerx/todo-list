@@ -21,25 +21,3 @@ visualFolderCreator(folderSection, defaultFolder);
 let defaultTodo = new Todo("The Odin Project", "Completing the curriculum and getting my first job as a dev", 
     "06-30-22", "High", "Pending", "Default");
 visualItemCreator(todoTable, defaultTodo);
-
-
-/*let folder = document.createElement("folder");
-    folder.className = "folder";
-    folder.id = id;
-    return folder;*/
-
-/*
-let testTodo1 = new Todo("Test1", "Testing", "Right now", "HIGH", "Pending", "Folder1");
-testTodo1.changeStatus();
-testTodo1.changePriority("MEDIUM");
-
-let testTodo2 = new Todo("Test2", "Testing", "Right now", "HIGH", "Pending", "Folder1");
-testTodo2.changeStatus();
-testTodo2.changePriority("LOW");
-
-let testFolder = new Folder("Test Folder")
-testFolder.addItem(testTodo1);
-testFolder.addItem(testTodo2);
-testFolder.removeItem(testTodo1);
-
-console.log(testFolder);*/

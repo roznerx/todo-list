@@ -1,7 +1,8 @@
 import { todoTable } from "./taskTable"
+import { Todo, visualItemCreator } from "./itemCreator";
 
 let folderArray = [];
-let selectedFolder = "";
+let selectedFolder = undefined;
 class Folder {
     constructor(name) {
         this.name = name;
@@ -51,9 +52,15 @@ function visualFolderCreator(x, y) {
             if (folderArray[i].name.toUpperCase() == visualFolderText.innerHTML.toUpperCase()) {
                 selectedFolder = folderArray[i];
                 todoTable.style.display = "block";
-            }
+                //MAYBE I SHOULD PUT THE VISUAL ITEM CREATION LOGIC HERE!!!
+                selectedFolder.forEach(t => {
+                    visualItemCreator(todoTable, t); // CADA TODO SERÍA POR CADA ELEMENTO...
+                    //TE ESTÁ BARDEANDO EL FOR EACH, OJOTA COMO LO APLICÁS...
+                });
+            }   
         }
     }
 };
+
 
 export { Folder , folderArray , selectedFolder , visualFolderCreator };

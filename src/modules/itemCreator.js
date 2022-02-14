@@ -1,3 +1,5 @@
+import { selectedFolder } from "./folderCreator"
+
 class Todo {
     constructor(title, description, deadline, priority, status, location) {
         this.title = title;

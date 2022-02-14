@@ -1,4 +1,4 @@
-import { Folder, folderArray } from "./folderCreator";
+import { Folder, folderArray, selectedFolder } from "./folderCreator";
 import { Todo, visualItemCreator } from "./itemCreator";
 import { todoTable } from "./taskTable";
 import { tasksSection } from "./sections";
@@ -52,11 +52,12 @@ itemPopUpForm.append(itemCreateButton);
 itemCreateButton.addEventListener("click", () => {
     let todo = new Todo(titleInputField.value, descriptionInputFiled.value, deadlineInputField.value, 
         priorityInputField.value, statusInputField.value, locationInputField.value);
-
     for (let i = 0; i < folderArray.length; i++) {
         if (folderArray[i].name.toUpperCase() == todo.location.toUpperCase()) {
             folderArray[i].addItem(todo);
-            visualItemCreator(todoTable, todo);
+
+            //visualItemCreator(todoTable, todo);
+
             itemPopUp.style.display = "none";
             itemPopUpLabel.innerHTML = "Create Your New Task";
             itemPopUpLabel.style.fontSize = "30px";
@@ -78,5 +79,7 @@ itemCreateButton.addEventListener("click", () => {
         }
     };    
 });
+
+
 
 export { itemPopUp };
