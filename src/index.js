@@ -10,14 +10,8 @@ document.body.appendChild(container);
 container.appendChild(header);
 container.appendChild(content);
 
-todoTable.style.display = "none"
-
-//Default Folder w/ Default ToDo
+//Default Folder
 let defaultFolder = new Folder("Default");
 defaultFolder.value = "Default";
 folderArray.push(defaultFolder);
 visualFolderCreator(folderSection, defaultFolder);
-
-let defaultTodo = new Todo("The Odin Project", "Completing the curriculum and getting my first job as a dev", 
-    "06-30-22", "High", "Pending", "Default");
-visualItemCreator(todoTable, defaultTodo);

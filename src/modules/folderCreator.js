@@ -1,5 +1,5 @@
 import { todoTable } from "./taskTable"
-import { Todo, visualItemCreator } from "./itemCreator";
+import { Todo, visualItemCreator, visualItemRow } from "./itemCreator";
 
 let folderArray = [];
 let selectedFolder = undefined;
@@ -48,19 +48,19 @@ function visualFolderCreator(x, y) {
     x.appendChild(visualFolder);
 
     visualFolder.onclick = (e) => {
+
         for (let i = 0; i < folderArray.length; i++) {
             if (folderArray[i].name.toUpperCase() == visualFolderText.innerHTML.toUpperCase()) {
-                selectedFolder = folderArray[i];
-                todoTable.style.display = "block";
-                //MAYBE I SHOULD PUT THE VISUAL ITEM CREATION LOGIC HERE!!!
-                selectedFolder.forEach(t => {
-                    visualItemCreator(todoTable, t); // CADA TODO SERÍA POR CADA ELEMENTO...
-                    //TE ESTÁ BARDEANDO EL FOR EACH, OJOTA COMO LO APLICÁS...
+                selectedFolder = folderArray[i];               
+                document.querySelectorAll(".visual-item-row").forEach(element => element.remove());
+                //FUNCIONA BIEN PERO HAY QUE RESOLVER COMO HACER PARA QUE EL ITEM SE RENDERICE 
+                //ESTANDO EN LA MISMA CARPETA
+                selectedFolder.content.forEach(t => {
+                    visualItemCreator(todoTable, t);
                 });
             }   
         }
     }
 };
-
 
 export { Folder , folderArray , selectedFolder , visualFolderCreator };
