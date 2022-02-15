@@ -402,3 +402,26 @@ input {
     height: 10%;
     padding: 1%;
 }
+
+/* Priority */
+
+#priority-input-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.priority-selection {
+    flex: none;
+    align-self: flex-start;
+    font-size: 17px;
+    margin-top: -1.4%;
+    /*margin-left: -1%;*/
+    margin-right: 1%;
+    /*height: auto;*/
+}
+
+.priority-selection:hover {
+    cursor: pointer;
+}

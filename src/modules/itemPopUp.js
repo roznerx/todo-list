@@ -41,14 +41,77 @@ let titleInputField = inputFieldMaker("title-input-field", "Enter Title");
 let descriptionInputFiled = inputFieldMaker("description-input-field", "Enter Description");
 let deadlineInputField = inputFieldMaker("deadline-input-field", "Enter Deadline");
 
-//let priorityInputField = inputFieldMaker("priority-input-field", "Select Priority");
+//let statusInputField = inputFieldMaker("status-input-field", "Enter Status");
+//let locationInputField = inputFieldMaker("location-input-field", "Select Location");
 
-//HAGAMOS QUE EN PRIORITY HAYA UNA BARRA TRIPLE
-let priorityInputField = inputFieldMaker("priority-input-field", "");
+//PRIORITY
+
+let priorityInputField = document.createElement("div");
+priorityInputField.className = "item-input-field";
+priorityInputField.id = "priority-input-field";
+itemPopUpInputContainer.appendChild(priorityInputField);
+
+let selectedPriority = undefined;
+let prioritiesArr = [];
+
+function priorityMaker(id, innerHTML) {
+    let priorityType = document.createElement("div");
+    priorityType.className = "priority-selection";
+    priorityType.id = id;
+    priorityType.innerHTML = innerHTML;
+    priorityInputField.appendChild(priorityType);
+    prioritiesArr.push(priorityType);
+    /*
+    priorityType.onclick = (e) => {
+        selectedPriority = priorityType;
+        priorityType.style.backgroundColor = "#222323";
+        priorityType.style.color = "#f0f6f0";
+        priorityType.style.padding = "1%, 0, 2%, 2%";
+        for (let i = 0; i <= prioritiesArr.length; i++) {
+            if (prioritiesArr[i] != selectedPriority) {
+                prioritiesArr[i].style.backgroundColor = "#f0f6f0";
+                prioritiesArr[i].style.color = "#222323";
+                prioritiesArr[i].style.padding = "0";
+            }
+        }
+    }
+    */
+};
+
+let lowPriority = priorityMaker("low-priority", "Low Priority");
+let midPriority = priorityMaker("mid-priority", "Mid Priority");
+let highPriority = priorityMaker("high-priority", "High Priority");
+
+console.log(prioritiesArr[1]);
 
 
-let statusInputField = inputFieldMaker("status-input-field", "Enter Status");
-let locationInputField = inputFieldMaker("location-input-field", "Select Location");
+
+/*
+for (let i = 0; i <= prioritiesArr.length; i++) {
+    lowPriority.onclick = () => {
+        //selectedPriority = prioritiesArr[i];
+        lowPriority.style.backgroundColor = "#222323";
+        lowPriority.style.color = "#f0f6f0";
+        lowPriority.style.padding = "1%, 0, 2%, 2%";
+    }
+}*/
+
+/*
+priorityType.onclick = (e) => {
+    selectedPriority = priorityType;
+    priorityType.style.backgroundColor = "#222323";
+    priorityType.style.color = "#f0f6f0";
+    priorityType.style.padding = "1%, 0, 2%, 2%";
+    for (let i = 0; i <= prioritiesArr.length; i++) {
+        if (prioritiesArr[i] != selectedPriority) {
+            prioritiesArr[i].style.backgroundColor = "#f0f6f0";
+            prioritiesArr[i].style.color = "#222323";
+            prioritiesArr[i].style.padding = "0";
+        }
+    }
+}
+*/
+
 
 //Task Create Button
 let itemCreateButton = document.createElement("h4");
