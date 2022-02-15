@@ -40,7 +40,13 @@ function inputFieldMaker(id, placeholder) {
 let titleInputField = inputFieldMaker("title-input-field", "Enter Title");
 let descriptionInputFiled = inputFieldMaker("description-input-field", "Enter Description");
 let deadlineInputField = inputFieldMaker("deadline-input-field", "Enter Deadline");
-let priorityInputField = inputFieldMaker("priority-input-field", "Enter Priority");
+
+//let priorityInputField = inputFieldMaker("priority-input-field", "Select Priority");
+
+//HAGAMOS QUE EN PRIORITY HAYA UNA BARRA TRIPLE
+let priorityInputField = inputFieldMaker("priority-input-field", "");
+
+
 let statusInputField = inputFieldMaker("status-input-field", "Enter Status");
 let locationInputField = inputFieldMaker("location-input-field", "Select Location");
 
