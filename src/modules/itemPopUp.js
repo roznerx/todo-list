@@ -163,11 +163,21 @@ itemCreateButton.id = "item-pop-up-create-button";
 itemCreateButton.innerHTML = "Create";
 itemPopUpForm.append(itemCreateButton);
 itemCreateButton.addEventListener("click", () => {
+
+
+    console.log(selectedFolder);
+
+
     let todo = new Todo(titleInputField.value, descriptionInputFiled.value, deadlineInputField.value, 
         priorityInputField.value, statusInputField.value, locationInputField.value);
     for (let i = 0; i < folderArray.length; i++) {
         if (folderArray[i].name.toUpperCase() == todo.location.toUpperCase()) {
             folderArray[i].addItem(todo);
+
+            
+            visualItemCreator(todoTable, todo); //Adding this seems to help rendering when already on folder...
+            
+            
             itemPopUp.style.display = "none";
             itemPopUpLabel.innerHTML = "Create Your New Task";
             itemPopUpLabel.style.fontSize = "30px";
@@ -187,8 +197,8 @@ itemCreateButton.addEventListener("click", () => {
             itemPopUpLabel.style.marginLeft =  "50px";
             itemPopUpLabel.style.marginTop =  "30px";
         }
-    };  
-    visualItemCreator(todoTable, todo); //Adding this seems to help rendering when already on folder...
+    }; 
+    
 });
 
 export { itemPopUp };

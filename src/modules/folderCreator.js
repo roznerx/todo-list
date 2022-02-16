@@ -52,8 +52,6 @@ function visualFolderCreator(x, y) {
             if (folderArray[i].name.toUpperCase() == visualFolderText.innerHTML.toUpperCase()) {
                 selectedFolder = folderArray[i];               
                 document.querySelectorAll(".visual-item-row").forEach(element => element.remove());
-                //FUNCIONA BIEN PERO HAY QUE RESOLVER COMO HACER PARA QUE EL ITEM SE RENDERICE 
-                //ESTANDO EN LA MISMA CARPETA
                 selectedFolder.content.forEach(t => {
                     visualItemCreator(todoTable, t);
                 });
