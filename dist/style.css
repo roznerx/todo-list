@@ -416,12 +416,35 @@ input {
     flex: none;
     align-self: flex-start;
     font-size: 17px;
-    margin-top: -1.4%;
+    margin-top: -1%;
     /*margin-left: -1%;*/
     margin-right: 1%;
     /*height: auto;*/
 }
 
 .priority-selection:hover {
+    cursor: pointer;
+}
+
+/* Status */
+
+#status-input-field {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+
+}
+
+.status-selection {
+    flex: none;
+    align-self: flex-start;
+    font-size: 18px;
+    margin-top: -1%;
+    /*margin-left: -1%;*/
+    margin-right: 1%;
+    /*height: auto;*/
+}
+
+.status-selection:hover {
     cursor: pointer;
 }

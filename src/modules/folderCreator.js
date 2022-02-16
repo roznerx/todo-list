@@ -48,7 +48,6 @@ function visualFolderCreator(x, y) {
     x.appendChild(visualFolder);
 
     visualFolder.onclick = (e) => {
-
         for (let i = 0; i < folderArray.length; i++) {
             if (folderArray[i].name.toUpperCase() == visualFolderText.innerHTML.toUpperCase()) {
                 selectedFolder = folderArray[i];               

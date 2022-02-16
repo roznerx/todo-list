@@ -45,23 +45,25 @@ let deadlineInputField = inputFieldMaker("deadline-input-field", "Enter Deadline
 //let statusInputField = inputFieldMaker("status-input-field", "Enter Status");
 //let locationInputField = inputFieldMaker("location-input-field", "Select Location");
 
-//PRIORITY
+//PRIORITY, STATUS AND LOCATION
+
+function toBlack(itemToTransform) {
+    itemToTransform.style.backgroundColor = "#222323";
+    itemToTransform.style.color = "#f0f6f0";
+    itemToTransform.style.padding = "1%, 0, 2%, 2%";
+}
+
+function toWhite (itemToTransform) {
+    itemToTransform.style.backgroundColor = "#f0f6f0";
+    itemToTransform.style.color = "#222323";
+    itemToTransform.style.padding = "0";
+}
+
+//PRIORITY -> Maybe I can put all this inside a module...
 let priorityInputField = document.createElement("div");
 priorityInputField.className = "item-input-field";
 priorityInputField.id = "priority-input-field";
 itemPopUpInputContainer.appendChild(priorityInputField);
-
-function toBlack(priorityToTransform) {
-    priorityToTransform.style.backgroundColor = "#222323";
-    priorityToTransform.style.color = "#f0f6f0";
-    priorityToTransform.style.padding = "1%, 0, 2%, 2%";
-}
-
-function toWhite (priorityToTransform) {
-    priorityToTransform.style.backgroundColor = "#f0f6f0";
-    priorityToTransform.style.color = "#222323";
-    priorityToTransform.style.padding = "0";
-}
 
 function priorityMaker(id, innerHTML) {
     let priorityType = document.createElement("div");
@@ -112,12 +114,48 @@ highPriority.addEventListener("click", () => {
     }
 });
 
-//STATUS
+//STATUS -> Maybe I can put all this inside a module...
 
+let statusInputField = document.createElement("div");
+statusInputField.className = "item-input-field";
+statusInputField.id = "status-input-field";
+itemPopUpInputContainer.appendChild(statusInputField);
 
+function statusMaker(id, innerHTML) {
+    let statusOption = document.createElement("div");
+    statusOption.className = "status-selection";
+    statusOption.id = id;
+    statusOption.innerHTML = innerHTML;
+    statusInputField.appendChild(statusOption);
+    return statusOption;
+};
 
+let statusPending = statusMaker("status-pending", "Pending");
+let statusCompleted = statusMaker("status-completed", "Completed");
 
+statusPending.addEventListener("click", () => {
+    if (!statusPending.id.includes("black")) {
+        toBlack(statusPending);
+        statusPending.id = "status-pending-black";
+        statusInputField.value = "Pending";
+        toWhite(statusCompleted);
+        statusCompleted.id = "status-completed";
+    }
+});
 
+statusCompleted.addEventListener("click", () => {
+    if (!statusCompleted.id.includes("black")) {
+        toBlack(statusCompleted);
+        statusCompleted.id = "status-pending-black";
+        statusCompleted.value = "Completed";
+        toWhite(statusPending);
+        statusPending.id = "status-pending";
+    }
+});
+
+//LOCATION
+
+let locationInputField = inputFieldMaker("location-input-field", "Select An Existing Folder");
 
 //Task Create Button
 let itemCreateButton = document.createElement("h4");
@@ -130,9 +168,6 @@ itemCreateButton.addEventListener("click", () => {
     for (let i = 0; i < folderArray.length; i++) {
         if (folderArray[i].name.toUpperCase() == todo.location.toUpperCase()) {
             folderArray[i].addItem(todo);
-
-            //visualItemCreator(todoTable, todo);
-
             itemPopUp.style.display = "none";
             itemPopUpLabel.innerHTML = "Create Your New Task";
             itemPopUpLabel.style.fontSize = "30px";
@@ -152,9 +187,8 @@ itemCreateButton.addEventListener("click", () => {
             itemPopUpLabel.style.marginLeft =  "50px";
             itemPopUpLabel.style.marginTop =  "30px";
         }
-    };    
+    };  
+    visualItemCreator(todoTable, todo); //Adding this seems to help rendering when already on folder...
 });
-
-
 
 export { itemPopUp };
