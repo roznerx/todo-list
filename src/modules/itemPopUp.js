@@ -2,6 +2,7 @@ import { Folder, folderArray, selectedFolder } from "./folderCreator";
 import { Todo, visualItemCreator } from "./itemCreator";
 import { todoTable } from "./taskTable";
 import { tasksSection } from "./sections";
+import { toBlack , toWhite } from "./styleFunctions";
 
 //Modal
 let itemPopUp = document.createElement("div");
@@ -41,23 +42,6 @@ function inputFieldMaker(id, placeholder) {
 let titleInputField = inputFieldMaker("title-input-field", "Enter Title");
 let descriptionInputFiled = inputFieldMaker("description-input-field", "Enter Description");
 let deadlineInputField = inputFieldMaker("deadline-input-field", "Enter Deadline");
-
-//let statusInputField = inputFieldMaker("status-input-field", "Enter Status");
-//let locationInputField = inputFieldMaker("location-input-field", "Select Location");
-
-//PRIORITY, STATUS AND LOCATION
-
-function toBlack(itemToTransform) {
-    itemToTransform.style.backgroundColor = "#222323";
-    itemToTransform.style.color = "#f0f6f0";
-    itemToTransform.style.padding = "1%, 0, 2%, 2%";
-}
-
-function toWhite (itemToTransform) {
-    itemToTransform.style.backgroundColor = "#f0f6f0";
-    itemToTransform.style.color = "#222323";
-    itemToTransform.style.padding = "0";
-}
 
 //PRIORITY -> Maybe I can put all this inside a module...
 let priorityInputField = document.createElement("div");
@@ -147,7 +131,7 @@ statusCompleted.addEventListener("click", () => {
     if (!statusCompleted.id.includes("black")) {
         toBlack(statusCompleted);
         statusCompleted.id = "status-pending-black";
-        statusCompleted.value = "Completed";
+        statusInputField.value = "Completed";
         toWhite(statusPending);
         statusPending.id = "status-pending";
     }
@@ -164,19 +148,14 @@ itemCreateButton.innerHTML = "Create";
 itemPopUpForm.append(itemCreateButton);
 itemCreateButton.addEventListener("click", () => {
 
-
-    console.log(selectedFolder);
-
-
     let todo = new Todo(titleInputField.value, descriptionInputFiled.value, deadlineInputField.value, 
         priorityInputField.value, statusInputField.value, locationInputField.value);
+
     for (let i = 0; i < folderArray.length; i++) {
         if (folderArray[i].name.toUpperCase() == todo.location.toUpperCase()) {
             folderArray[i].addItem(todo);
-
             
             visualItemCreator(todoTable, todo); //Adding this seems to help rendering when already on folder...
-            
             
             itemPopUp.style.display = "none";
             itemPopUpLabel.innerHTML = "Create Your New Task";
@@ -188,8 +167,8 @@ itemCreateButton.addEventListener("click", () => {
             titleInputField.value = "";
             descriptionInputFiled.value = "";
             deadlineInputField.value = "";
-            priorityInputField.value = "";
-            statusInputField.value = "";
+            //priorityInputField.value = "";
+            //statusInputField.value = "";
             locationInputField.value = "";
         } else {
             itemPopUpLabel.innerHTML = "Please Select An Existing Folder!";      

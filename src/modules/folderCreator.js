@@ -51,9 +51,9 @@ function visualFolderCreator(x, y) {
         for (let i = 0; i < folderArray.length; i++) {
             if (folderArray[i].name.toUpperCase() == visualFolderText.innerHTML.toUpperCase()) {
                 selectedFolder = folderArray[i];               
-                document.querySelectorAll(".visual-item-row").forEach(element => element.remove());
+                document.querySelectorAll(".visual-item-row").forEach(element => element.remove()); //REMOVES EXISTING ELEMENTS
                 selectedFolder.content.forEach(t => {
-                    visualItemCreator(todoTable, t);
+                    visualItemCreator(todoTable, t); //ADDS FOLDER ELEMENTS
                 });
             }   
         }
