@@ -3,6 +3,7 @@ import { Todo, visualItemCreator } from "./itemCreator";
 import { todoTable } from "./taskTable";
 import { tasksSection } from "./sections";
 import { toBlack , toWhite } from "./styleFunctions";
+import { castArray, forEach } from "lodash";
 
 //Modal
 let itemPopUp = document.createElement("div");
@@ -145,6 +146,7 @@ let locationInputField = inputFieldMaker("location-input-field", "Select An Exis
 let itemCreateButton = document.createElement("h4");
 itemCreateButton.id = "item-pop-up-create-button";
 itemCreateButton.innerHTML = "Create";
+itemCreateButton.className = "create-and-edit-buttons";
 itemPopUpForm.append(itemCreateButton);
 itemCreateButton.addEventListener("click", () => {
 
@@ -154,6 +156,7 @@ itemCreateButton.addEventListener("click", () => {
     for (let i = 0; i < folderArray.length; i++) {
         if (folderArray[i].name.toUpperCase() == todo.location.toUpperCase()) {
             folderArray[i].addItem(todo);
+            selectedFolder = folderArray[i];
             
             visualItemCreator(todoTable, todo); //Adding this seems to help rendering when already on folder...
             
@@ -180,4 +183,77 @@ itemCreateButton.addEventListener("click", () => {
     
 });
 
-export { itemPopUp };
+function edit(titleOfData) {
+    for (let i = 0, l = selectedFolder.content.length; i < l; i++) {
+        let t = selectedFolder.content[i];
+        if (titleOfData == t.title) {
+            //1st -> We display the ItemPopUp
+            document.body.appendChild(itemPopUp);
+            itemPopUp.style.display = "block";
+            //2nd -> We display a new prompt
+            itemPopUpLabel.innerHTML = "Edit Your Task";
+            itemPopUpLabel.style.alignItems = "center";
+            itemPopUpLabel.style.marginLeft =  "185px";
+            itemPopUpLabel.style.marginRight =  "45px";
+            itemPopUpLabel.style.paddingTop = "none";
+            //3rd -> The input fields are equal to the task current values
+            titleInputField.value = t.title;
+            descriptionInputFiled.value = t.description;
+            deadlineInputField.value = t.deadline;
+            priorityInputField.value = t.priority;
+            statusInputField.value = t.status;
+            locationInputField.value = t.location;
+            //4rd -> We remove the CREATE button and instead make an EDIT button
+            itemPopUpForm.removeChild(itemCreateButton);
+            let itemEditButton = document.createElement("h4");
+            itemEditButton.id = "item-pop-up-edit-button";
+            itemEditButton.innerHTML = "Edit";
+            itemEditButton.className = "create-and-edit-buttons";
+            itemEditButton.style.fontSize = "25px";
+            itemEditButton.style.paddingLeft = "5%";
+            itemPopUpForm.append(itemEditButton);
+            //5th -> We update the Todo when clicking the new button
+            itemEditButton.addEventListener("click", () => {
+                for (let j = 0; j < folderArray.length; j++) {
+                    if (folderArray[j].name.toUpperCase() == locationInputField.toUpperCase()) {
+                        //A: we first update the abstract Todo
+                        t.title = titleInputField.value;
+                        t.description = descriptionInputFiled.value;
+                        t.deadline = deadlineInputField.value;
+                        t.priority = priorityInputField.value;
+                        t.status = statusInputField.value;
+                        t.location = locationInputField.value;
+                        //B: we then update the visual item
+
+                        //className == "visual-item-row";
+
+                        //6th -> We return this PopUp to its normal form
+                        itemPopUpForm.removeChild(itemEditButton);
+                        itemPopUpForm.append(itemCreateButton);
+
+                        itemPopUp.style.display = "none";
+                        itemPopUpLabel.innerHTML = "Create Your New Task";
+                        itemPopUpLabel.style.fontSize = "30px";
+                        itemPopUpLabel.style.alignItems = "center";
+                        itemPopUpLabel.style.marginLeft =  "135px";
+                        itemPopUpLabel.style.marginRight =  "45px";
+                        itemPopUpLabel.style.paddingTop = "none";
+                        titleInputField.value = "";
+                        descriptionInputFiled.value = "";
+                        deadlineInputField.value = "";
+                        //priorityInputField.value = "";
+                        //statusInputField.value = "";
+                        locationInputField.value = "";
+                    } else {
+                        itemPopUpLabel.innerHTML = "Please Select An Existing Folder!";      
+                        itemPopUpLabel.style.fontSize = "25px";
+                        itemPopUpLabel.style.marginLeft =  "50px";
+                        itemPopUpLabel.style.marginTop =  "30px";
+                    }
+                };
+            });
+        }
+    }
+};
+
+export { itemPopUp , edit };

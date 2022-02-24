@@ -30,7 +30,6 @@ let folderCreateButton = document.createElement("h4");
 folderCreateButton.id = "folder-pop-up-create-button";
 folderCreateButton.innerHTML = "Create";
 function superFolder() {
-
     let folder = new Folder(folderPopUpInput.value);
     folderArray.push(folder);
 
@@ -56,6 +55,5 @@ folderCreateButton.onclick = (e) => {
 }
 
 folderPopUpForm.append(folderCreateButton);
-
 
 export { folderPopUp , /*folderSelectedName*/ } 

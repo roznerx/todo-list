@@ -19,6 +19,6 @@ tableHeaderMaker("deadline");
 tableHeaderMaker("priority");
 tableHeaderMaker("status");
 tableHeaderMaker("location");
-//tableHeaderMaker("delete");
+tableHeaderMaker("options");
 
 export { todoTable };
