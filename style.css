@@ -339,7 +339,7 @@ input {
     margin-bottom: -5px;
 }
 
-#item-pop-up-create-button {
+.create-and-edit-buttons {
     font-family: 'retro_computer';
     font-size: 20px;
     color: #222323;
@@ -352,7 +352,7 @@ input {
     padding-top: 2%;
 }
 
-#item-pop-up-create-button:hover {
+.create-and-edit-buttons:hover {
     cursor: pointer;
     background-color: #222323;
     color: #f0f6f0;
@@ -446,5 +446,11 @@ input {
 }
 
 .status-selection:hover {
+    cursor: pointer;
+}
+
+/* Edit */
+
+#edit-button:hover {
     cursor: pointer;
 }
