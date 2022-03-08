@@ -215,7 +215,7 @@ function edit(titleOfData) {
             //5th -> We update the Todo when clicking the new button
             itemEditButton.addEventListener("click", () => {
                 for (let j = 0; j < folderArray.length; j++) {
-                    if (folderArray[j].name.toUpperCase() == locationInputField.toUpperCase()) {
+                    if (folderArray[j].name.toUpperCase() == locationInputField.value.toUpperCase()) {
                         //A: we first update the abstract Todo
                         t.title = titleInputField.value;
                         t.description = descriptionInputFiled.value;
@@ -224,13 +224,17 @@ function edit(titleOfData) {
                         t.status = statusInputField.value;
                         t.location = locationInputField.value;
                         //B: we then update the visual item
-
-                        //className == "visual-item-row";
-
+                        for (let k = 0; k < todoTable.length; k++) {
+                            if (todoTable[k].id == t.title) {
+                                todoTable[k].innerHTML = t.title;
+                                todoTable[k].description = t.description;
+                                todoTable[k].deadline = t.deadline;
+                                todoTable[k].priority = t.priority;
+                                todoTable[k].status = t.status;
+                                todoTable[k].location = t.location;
+                            }
+                        }
                         //6th -> We return this PopUp to its normal form
-                        itemPopUpForm.removeChild(itemEditButton);
-                        itemPopUpForm.append(itemCreateButton);
-
                         itemPopUp.style.display = "none";
                         itemPopUpLabel.innerHTML = "Create Your New Task";
                         itemPopUpLabel.style.fontSize = "30px";
@@ -244,6 +248,13 @@ function edit(titleOfData) {
                         //priorityInputField.value = "";
                         //statusInputField.value = "";
                         locationInputField.value = "";
+                        itemPopUpForm.removeChild(itemEditButton);
+                        itemPopUpForm.append(itemCreateButton);
+                        //7th -> We render the the table again!
+                        document.querySelectorAll(".visual-item-row").forEach(element => element.remove()); //REMOVES EXISTING ELEMENTS
+                        selectedFolder.content.forEach(t => {
+                        visualItemCreator(todoTable, t); //ADDS FOLDER ELEMENTS
+                });
                     } else {
                         itemPopUpLabel.innerHTML = "Please Select An Existing Folder!";      
                         itemPopUpLabel.style.fontSize = "25px";
