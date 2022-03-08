@@ -1,4 +1,4 @@
-import { Folder, folderArray } from "./folderCreator";
+import { Folder, folderArray , selectedFolder, visualFolderCreator } from "./folderCreator";
 import { folderSection } from "./sections";
 
 //Modal
@@ -30,18 +30,10 @@ let folderCreateButton = document.createElement("h4");
 folderCreateButton.id = "folder-pop-up-create-button";
 folderCreateButton.innerHTML = "Create";
 function superFolder() {
-
     let folder = new Folder(folderPopUpInput.value);
-    console.log(folder);
-
     folderArray.push(folder);
-    console.log(folderArray);
-    console.log(folderArray.length);
 
-    let visualFolder = document.createElement("div");
-    visualFolder.className = "visual-folder";
-    visualFolder.innerHTML = folderPopUpInput.value;
-    folderSection.appendChild(visualFolder);
+    visualFolderCreator(folderSection, folderPopUpInput);
 
     folderPopUp.style.display = "none";
     folderPopUpInput.value = "";
@@ -61,12 +53,6 @@ folderCreateButton.onclick = (e) => {
         folderPopUpLabel.style.marginLeft = "45px";
     }
 }
-
-/*
-if (folderArray.length = 1) {
-    folderSection.style.overflowY = "auto";
-}
-*/
 
 folderPopUpForm.append(folderCreateButton);
 
