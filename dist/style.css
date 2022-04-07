@@ -1,0 +1,456 @@
+/* Font and Palette
+1bit Monitor Glow Palette
+Created by Polyducks
+palette-black: #222323;
+palette-white: #f0f6f0;
+*/
+
+@font-face {
+    font-family: 'retro_computer';
+    src: url('font/retro_computer_personal_use-webfont.woff2') format('woff2'),
+         url('font/retro_computer_personal_use-webfont.woff') format('woff'),
+         url('font/retro_computer_personal_use-webfont.ttf') format('truetype'),
+         url('font/retro_computer_personal_use-webfont.svg#retro_computerregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/* HTML Basic Skeleton */ 
+
+html {
+    position: relative;
+    min-width: 1024px;
+    min-height: 768px;
+    height: 100%;
+}
+
+body {
+    background-color: #f0f6f0;
+    height: 100%;
+    margin: 0;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/* Header */ 
+
+.header {
+    order: 1;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 180px; 
+    background-color: #f0f6f0;
+    border-bottom: 5px solid #222323;
+}
+
+.header-title {
+    font-family: 'retro_computer';
+    font-size: 70px;
+    color: #222323;
+    margin-left: 50px;
+    margin-top: 60px;
+    height:50px; 
+}
+
+#bar {
+    margin-left: 90px;
+    border: 3px solid #222323;
+}
+
+#headerButtons {
+    margin-left: 65px;
+    margin-top: 75px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 60px;
+}
+
+.headerButton {
+    font-family: 'retro_computer';
+    background-color: #f0f6f0;
+    color: #222323;
+    border: 4px solid #222323;
+    font-size: 45px;
+    padding: 10px;
+    margin-top: -15px;
+    margin-left: 20px;
+}
+
+.headerButton:hover {
+    cursor: pointer;
+    background-color: #222323;
+    color: #f0f6f0;
+    border: 4px solid #f0f6f0;
+}
+
+#new-task-button{
+    margin-left: 20px;
+}
+
+/* Page Content */
+
+.content {
+    order: 2;
+    display: flex;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 185px;
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+/* Folder Section */ 
+
+#folder-section {
+    overflow-y: scroll;
+    height: calc(100% - 180px);
+    width: 650px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: left;
+    line-height: 30px;
+}
+
+/* Folder PopUp */
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #f0f6f0;
+    margin-top: 10%;
+    margin-left: 30%;
+    border: 3px solid #222323;
+    width: 500px;
+    height: 250px;
+}
+
+#folder-pop-up-label {
+    font-family: 'retro_computer';
+    color: #222323;
+    font-size: 30px;
+    margin-left: 45px;
+    margin-right: 45px;
+}
+
+input {
+    width: 80%;
+    height: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    margin-left: 10%;
+    font-family: 'retro_computer';
+    font-size: 20px;
+    display: inline-block;
+    border: 2px solid #222323;
+    box-sizing: border-box;
+    margin-bottom: -5px;
+}
+
+#folder-pop-up-create-button {
+    font-family: 'retro_computer';
+    font-size: 20px;
+    color: #222323;
+    margin-left: 32%;
+    width: 125px;
+    height: 35px;
+    border: 3px solid #222323;
+    padding-left: 4%;
+    padding-top: 2%;
+}
+
+#folder-pop-up-create-button:hover {
+    cursor: pointer;
+    background-color: #222323;
+    color: #f0f6f0;
+    border: 4px solid #f0f6f0;
+}
+
+/* Visual Folders */
+
+.visual-folder {
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 200px;
+    width: 200px;
+    align-content: space-between;
+    justify-content: center;
+    /*border: 3px solid #222323;*/
+    margin: 10px;
+    margin-top: 30px;
+    margin-left: 70px;
+    padding-left:3px;
+    padding-bottom:10px;
+}
+
+.visual-folder:before {
+    content: "";
+    float: left;
+    padding-top: 100%;
+}
+
+.visual-folder:hover {
+    cursor: pointer;
+}
+
+.visual-folder-img {
+    display: block;
+    align-content: center;
+    height: 100px;
+    margin: 20px;
+}
+
+.visual-folder-text {
+    height: 100px;
+    width: 150px;
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: 'retro_computer';
+    font-size: 20px;
+    text-align: center;
+    word-wrap: break-word;
+    flex-wrap: nowrap;
+    margin-top: -60px;
+}
+
+/* Sections Bar */
+
+#sections-bar {
+    margin-left: -2px;
+    border: 3px solid #222323;
+}
+
+/* Task Section */
+
+#task-section {
+    overflow-y: scroll;
+    height: calc(100% - 180px);
+    width: calc(100% - 660px);
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: left;
+    line-height: 30px;
+}
+
+/* Item PopUp */
+
+#item-pop-up-form {
+    background-color: #f0f6f0;
+    margin-top: 10%;
+    margin-left: 30%;
+    border: 3px solid #222323;
+    height: 500px;
+    width: 750px;
+}
+
+
+#item-pop-up-label {
+    font-family: 'retro_computer';
+    color: #222323;
+    font-size: 30px;
+    margin-left: 45px;
+    margin-right: 45px;
+}
+
+#item-pop-up-label {
+    font-family: 'retro_computer';
+    color: #222323;
+    font-size: 30px;
+    align-items: center;
+    margin-left: 135px;
+    margin-right: 45px;
+}
+
+#item-pop-up-input-container {
+    height: 350px;
+    width: 600px;
+    margin-left: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.item-input-field {
+    width: 100%;
+    height: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-family: 'retro_computer';
+    font-size: 20px;
+    display: inline-block;
+    border: 2px solid #222323;
+    box-sizing: border-box;
+    margin-bottom: -5px;
+}
+
+.create-and-edit-buttons {
+    font-family: 'retro_computer';
+    font-size: 20px;
+    color: #222323;
+    margin-left: 37%;
+    margin-top: -2%;
+    width: 125px;
+    height: 35px;
+    border: 3px solid #222323;
+    padding-left: 3%;
+    padding-top: 2%;
+}
+
+.create-and-edit-buttons:hover {
+    cursor: pointer;
+    background-color: #222323;
+    color: #f0f6f0;
+    border: 4px solid #f0f6f0;
+}
+
+/* Tasks Table */
+
+#todo-table {
+    background-color: #f0f6f0;
+    margin-top: 2%;
+    margin-left: 3%;
+    border: 3px solid #222323;
+    width: 95%;
+}
+
+#todo-table-rows {
+    background-color: #f0f6f0;
+    border: 3px solid #222323;
+}
+
+.table-header {
+    font-family: 'retro_computer';
+    font-size: 15px;
+    color: #222323;
+    border: 3px solid #222323;
+    height: 100%;
+    width: auto;
+    height: 10%;
+    padding: 10px;
+}
+
+/* Visual Tasks */
+
+.visual-item-row {
+    background-color: #f0f6f0;
+    border: 3px solid #222323;
+}
+
+.table-data {
+    font-family: 'retro_computer';
+    font-size: 12px;
+    color: #222323;
+    border: 3px solid #222323;
+    height: 100%;
+    width: auto;
+    height: 10%;
+    padding: 1%;
+}
+
+/* Priority */
+
+#priority-input-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.priority-selection {
+    flex: none;
+    align-self: flex-start;
+    font-size: 17px;
+    margin-top: -1%;
+    /*margin-left: -1%;*/
+    margin-right: 1%;
+    /*height: auto;*/
+}
+
+.priority-selection:hover {
+    cursor: pointer;
+}
+
+/* Status */
+
+#status-input-field {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+
+}
+
+.status-selection {
+    flex: none;
+    align-self: flex-start;
+    font-size: 18px;
+    margin-top: -1%;
+    /*margin-left: -1%;*/
+    margin-right: 1%;
+    /*height: auto;*/
+}
+
+.status-selection:hover {
+    cursor: pointer;
+}
+
+/* Edit */
+
+#edit-button:hover {
+    cursor: pointer;
+}
